@@ -1,4 +1,4 @@
-# Your-App-Name
+# Splunk Community Add-On for UCC Example
 
 Essential links for the project:
 
