@@ -1,0 +1,235 @@
+{
+    "pages": {
+        "configuration": {
+            "tabs": [
+                {
+                    "name": "account",
+                    "restHandlerModule": "example_api_key_verification",
+                    "restHandlerClass": "APIKeyValidator",
+                    "table": {
+                        "actions": [
+                            "edit",
+                            "delete",
+                            "clone"
+                        ],
+                        "header": [
+                            {
+                                "label": "Name",
+                                "field": "name"
+                            }
+                        ]
+                    },
+                    "entity": [
+                        {
+                            "type": "text",
+                            "label": "Name",
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "errorMsg": "Account Name must begin with a letter and consist exclusively of alphanumeric characters and underscores.",
+                                    "pattern": "^[a-zA-Z]\\w*$"
+                                },
+                                {
+                                    "type": "string",
+                                    "errorMsg": "Length of input name should be between 1 and 100",
+                                    "minLength": 1,
+                                    "maxLength": 100
+                                }
+                            ],
+                            "field": "name",
+                            "help": "A unique name for the account.",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "label": "API key",
+                            "field": "api_key",
+                            "help": "API key that is validated by the server (it is 'super-secret-api-token', but don't tell anyone).",
+                            "required": true,
+                            "encrypted": true
+                        }
+                    ],
+                    "title": "Accounts"
+                },
+                {
+                    "type": "proxyTab",
+                    "proxy_type": true,
+                    "username": true,
+                    "password": true,
+                    "dns_resolution": true
+                },
+                {
+                    "type": "loggingTab"
+                },
+                {
+                    "name": "advanced_inputs",
+                    "title": "Advanced Inputs",
+                    "customTab": {
+                        "src": "AdvancedInputsTab",
+                        "type": "external"
+                    },
+                    "entity": []
+                }
+            ],
+            "title": "Configuration",
+            "description": "Set up your add-on"
+        },
+        "inputs": {
+            "services": [
+                {
+                    "name": "example",
+                    "restHandlerModule": "example_delete_checkpoint_rh",
+                    "restHandlerClass": "DeleteCheckpointRestHandler",
+                    "entity": [
+                        {
+                            "type": "text",
+                            "label": "Name",
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "errorMsg": "Input Name must begin with a letter and consist exclusively of alphanumeric characters and underscores.",
+                                    "pattern": "^[a-zA-Z]\\w*$"
+                                },
+                                {
+                                    "type": "string",
+                                    "errorMsg": "Length of input name should be between 1 and 100",
+                                    "minLength": 1,
+                                    "maxLength": 100
+                                }
+                            ],
+                            "field": "name",
+                            "help": "A unique name for the data input.",
+                            "required": true
+                        },
+                        {
+                            "type": "interval",
+                            "label": "Interval",
+                            "defaultValue": "300",
+                            "field": "interval",
+                            "options": {
+                                "range": [
+                                    10,
+                                    301
+                                ]
+                            },
+                            "help": "Time interval of the data input, in seconds.",
+                            "required": true
+                        },
+                        {
+                            "type": "index",
+                            "field": "index",
+                            "label": "Index"
+                        },
+                        {
+                            "type": "singleSelect",
+                            "label": "Account to use",
+                            "options": {
+                                "referenceName": "account"
+                            },
+                            "help": "Account to use for this input.",
+                            "field": "account",
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "label": "Fetch from Page",
+                            "defaultValue": "0",
+                            "field": "fetch_from",
+                            "validators": [
+                                {
+                                    "type": "number",
+                                    "range": [
+                                        0,
+                                        10000
+                                    ],
+                                    "isInteger": true
+                                }
+                            ],
+                            "help": "Page to fetch the data from. Default: 0.",
+                            "required": false
+                        },
+                        {
+                            "label": "Start From",
+                            "field": "start_from",
+                            "type": "custom",
+                            "options": {
+                                "src": "DateInput",
+                                "type": "external"
+                            }
+                        }
+                    ],
+                    "inputHelperModule": "example_helper",
+                    "title": "example"
+                }
+            ],
+            "title": "Inputs",
+            "description": "Manage your data inputs",
+            "table": {
+                "actions": [
+                    "edit",
+                    "delete",
+                    "clone"
+                ],
+                "header": [
+                    {
+                        "label": "Name",
+                        "field": "name"
+                    },
+                    {
+                        "label": "Interval",
+                        "field": "interval"
+                    },
+                    {
+                        "label": "Index",
+                        "field": "index"
+                    },
+                    {
+                        "label": "Status",
+                        "field": "disabled"
+                    }
+                ],
+                "moreInfo": [
+                    {
+                        "label": "Name",
+                        "field": "name"
+                    },
+                    {
+                        "label": "Interval",
+                        "field": "interval"
+                    },
+                    {
+                        "label": "Index",
+                        "field": "index"
+                    },
+                    {
+                        "label": "Status",
+                        "field": "disabled",
+                        "mapping": {
+                            "true": "Inactive",
+                            "false": "Active"
+                        }
+                    }
+                ]
+            }
+        },
+        "dashboard": {
+            "panels": [
+                {
+                    "name": "default"
+                }
+            ]
+        }
+    },
+    "meta": {
+        "name": "SplunkCommunity_TA_UCCExample",
+        "restRoot": "SplunkCommunity_TA_UCCExample",
+        "version": "0.0.1",
+        "displayName": "Splunk Community Add-on for UCC Example",
+        "schemaVersion": "0.0.9",
+        "supportedThemes": [
+            "light",
+            "dark"
+        ],
+        "_uccVersion": "5.58.0"
+    }
+}
