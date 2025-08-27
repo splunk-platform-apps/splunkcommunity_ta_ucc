@@ -1,0 +1,28 @@
+name: Feature Request
+description: File a new feature request.
+title: "[Feature]: "
+labels: ["feat", "dev"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        :heart_hands: Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of the feature you would like to have integrated.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Available Alternatives
+      description: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Links? References? Images? Please attach or provide anything that will give us more context about the requested feature!
+    validations:
+      required: false
