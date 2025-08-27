@@ -18,4 +18,4 @@ concurrency:
 jobs:
   call-workflow:
     if: github.repository != 'splunk-platform-apps/template-addon'
-    uses: splunk-platform-apps/.github/.github/workflows/reusable-quality-assessment.yml@1
+    uses: splunk-platform-apps/.github/.github/workflows/reusable-quality-assessment.yml@main
