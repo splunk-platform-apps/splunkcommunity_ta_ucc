@@ -4,9 +4,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-const app_name: string = '<ADD HERE YOUR APP NAME>';
-const repo_name: string = '<ADD HERE YOUR REPO NAME>';
-const app_descr: string = '<ADD HERE APP DESCRIPTION>';
+const app_name: string = 'Splunk Community Add-On for UCC Example';
+const repo_name: string = 'splunkcommunity_ta_ucc';
+const app_descr: string = 'This is an example for UCC framework built Add-ons';
 
 const config: Config = {
   title: app_name,
