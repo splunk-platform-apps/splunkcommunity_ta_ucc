@@ -1,4 +1,4 @@
-# [App / Add-On Name]
+# Splunk Community Add-On for UCC Example
 Description of the project: self-explanatory, clearly state the scope.
 Provide technical insights by referencing specific environments, frameworks, tools, libraries used (incl. versions).
 
