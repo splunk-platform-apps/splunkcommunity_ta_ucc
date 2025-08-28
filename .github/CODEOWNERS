@@ -1,4 +1,4 @@
-* @splunk-platform-apps/core-fdse-devrel
+* @splunk-platform-apps/admins
 
 # Make CODEOWNERS file changes require admin approval
-/.github/CODEOWNERS @splunk-platform-apps/core-fdse-devrel
+/.github/CODEOWNERS @splunk-platform-apps/admins
