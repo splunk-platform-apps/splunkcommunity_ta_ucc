@@ -11,8 +11,6 @@ from solnlib import conf_manager, log
 from solnlib.modular_input import checkpointer
 from splunklib import modularinput as smi
 
-PAGE_SIZE = 100
-
 
 def logger_for_input(input_name: str) -> logging.Logger:
     return log.Logs().get_logger(f"{example_utils.ADDON_NAME.lower()}_{input_name}")
@@ -31,17 +29,15 @@ def get_account_api_key(session_key: str, account_name: str):
 def get_data_from_api(
     logger: logging.Logger, api_key: str, page_number: Optional[int] = 0
 ):
-    logger.info("Getting data from an external API == ", page_number)
+    logger.info(f"Getting data from an external API [{page_number}]")
 
     def _call_api(page_number: int):
-        parameters = {"page": page_number, "per_page": PAGE_SIZE}
         response = requests.get(
-            "http://server-example-ta:5000/events",
+            "https://status.mypurecloud.com/api/v2/incidents.json",
             headers={
                 "API-Key": api_key,
             },
             timeout=20,
-            params=parameters,
         )
         response.raise_for_status()
         return response.json()
@@ -99,11 +95,12 @@ def stream_events(inputs: smi.InputDefinition, event_writer: smi.EventWriter):
                 or 0
             )
             data = get_data_from_api(logger, api_key, current_checkpoint)
-            sourcetype = "example:events"
-            for line in data["events"]:
+            sourcetype = "example:incidents"
+            for incident in data["incidents"]:
+                incident["iteration_cnt"] = int(current_checkpoint) + 1
                 event_writer.write_event(
                     smi.Event(
-                        data=json.dumps(line, ensure_ascii=False, default=str),
+                        data=json.dumps(incident, ensure_ascii=False, default=str),
                         index=input_item.get("index"),
                         sourcetype=sourcetype,
                     )
