@@ -205,7 +205,7 @@
     "meta": {
         "name": "SplunkCommunity_TA_UCCExample",
         "restRoot": "SplunkCommunity_TA_UCCExample",
-        "version": "0.0.1",
+        "version": "0.1.0",
         "displayName": "Splunk Community Add-on for UCC Example",
         "schemaVersion": "0.0.9",
         "supportedThemes": [
