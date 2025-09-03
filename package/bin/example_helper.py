@@ -97,6 +97,7 @@ def stream_events(inputs: smi.InputDefinition, event_writer: smi.EventWriter):
             data = get_data_from_api(logger, api_key, current_checkpoint)
             sourcetype = "example:incidents"
             for incident in data["incidents"]:
+                incident["iteration_cnt"] = int(current_checkpoint) + 1
                 event_writer.write_event(
                     smi.Event(
                         data=json.dumps(incident, ensure_ascii=False, default=str),
