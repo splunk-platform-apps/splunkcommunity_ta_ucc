@@ -60,15 +60,6 @@
                 },
                 {
                     "type": "loggingTab"
-                },
-                {
-                    "name": "advanced_inputs",
-                    "title": "Advanced Inputs",
-                    "customTab": {
-                        "src": "AdvancedInputsTab",
-                        "type": "external"
-                    },
-                    "entity": []
                 }
             ],
             "title": "Configuration",
@@ -147,15 +138,6 @@
                             ],
                             "help": "Page to fetch the data from. Default: 0.",
                             "required": false
-                        },
-                        {
-                            "label": "Start From",
-                            "field": "start_from",
-                            "type": "custom",
-                            "options": {
-                                "src": "DateInput",
-                                "type": "external"
-                            }
                         }
                     ],
                     "inputHelperModule": "example_helper",
