@@ -49,7 +49,7 @@ Useful SPL searches to:
 
 ## Credits & Acknowledgements
 
-This Add-On was built based on the [splunk-example-ta](https://github.com/splunk/splunk-example-ta/tree/main). Thank you a ton to the project maintainers and developers. :heart:
+This Add-On was built based on the [splunk-example-ta](https://github.com/splunk/splunk-example-ta/tree/main). Thank you a ton to the project maintainers and developers. :hearts:
 
 ## References
 * [UCC Framework Documentation](https://splunk.github.io/addonfactory-ucc-generator/)
