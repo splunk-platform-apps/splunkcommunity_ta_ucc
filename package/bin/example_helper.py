@@ -98,11 +98,13 @@ def stream_events(inputs: smi.InputDefinition, event_writer: smi.EventWriter):
             sourcetype = "example:incidents"
             for incident in data["incidents"]:
                 incident["iteration_cnt"] = int(current_checkpoint) + 1
+                created_at = datetime.strptime(incident["created_at"], "%Y-%m-%dT%H:%M:%S.%f%z").timestamp()
                 event_writer.write_event(
                     smi.Event(
                         data=json.dumps(incident, ensure_ascii=False, default=str),
                         index=input_item.get("index"),
                         sourcetype=sourcetype,
+                        time=created_at
                     )
                 )
             new_checkpoint = int(current_checkpoint) + 1
