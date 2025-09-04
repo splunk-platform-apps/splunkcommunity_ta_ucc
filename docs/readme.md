@@ -1,51 +1,68 @@
 # Splunk Community Add-On for UCC Example
-Description of the project: self-explanatory, clearly state the scope.
-Provide technical insights by referencing specific environments, frameworks, tools, libraries used (incl. versions).
 
-## Features (optional)
-What makes your project stand out? Highlight relevant features.
+This is an example of Technology Add-On (TA) for Splunk built using the [UCC Framework](https://splunk.github.io/addonfactory-ucc-generator/) which demonstrates how to define a modular input to collect data from an API and send it to Splunk.
+
+This Add-On provides a tool to regularly ingest incidents via REST API from [Genesys Cloud System Status](https://status.mypurecloud.com/).
+
+## Features
+* API Key validation at configuration
+* Poll and ingest the 50 most recent incidents from this [API endpoint](https://status.mypurecloud.com/api/v2#incidents)
+* Ingestion of incidents using sourcetype `example:incidents`
 
 ## Getting Started
-
-> [Quick description of what the app does]
-
-### Requirements (optional)
-What things you need to have installed to run installation smoothly. Add also details on how to install them.
-
 ### Installation
-Tell other users how to install your project. Optionally, include a gif to make the process even more clear for other people.
-Add links to Splunk documentation for details instructions on cloud / on-prem. Specify on which tier the app / add-on must be installed (e.g. Search Head, Heavy Forwarder, etc.)
+Please refer to the [Splunk Documentation](https://docs.splunk.com/Documentation/AddOns/released/Overview/Installingadd-ons) for guidance on installing the Add-On in your environment. The app needs to be installed on the Forwarder tier.
 
-### Configuration (optional)
-Explain how to configure your project after installation.
+### Configuration
+Splunk **admins** will also be requested to:
+
+* Select *Splunk Community Add-on for UCC Example / Configuration* among Splunk UI apps
+
+* Add as many accounts as needed by providing:
+
+  * **Name** of the account (e.g. test)
+  * **API Key** to be validated by the server. Must correspond to `super-secret-api-token`
 
 ### Usage
-Instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screen shots of your project in action.
+After having configured an account:
+
+* Select *Splunk Community Add-on for UCC Example / Inputs* among Splunk UI apps
+
+* Select *Create New Input* and configure your own input(s) by providing:
+
+    * **Name** to identify the input,
+    * **Interval** in seconds (i.e. how often do you want to poll data),
+    * **Index** that will store data,
+    * **Account** to be used to authenticate
+    * **Fetch from page** to fetch data from a specific page
+
+* Enable the input to start collecting data
 
 ## Troubleshooting
+Useful SPL searches to:
 
-Give some hints on how to troubleshoot your app/add-on.
-Add troubleshooting steps and resources.
-
-## Example(s) (optional)
-Add here examples of usages. Another good place to include screenshots or gifs.
-
-## Tests (optional)
-Explain how to run tests if you've provided some.
+* Check on errors occurring at execution `index=_internal sourcetype="splunkcommunity_ta_uccexample_test-*"`
 
 ## Versions Supported
 
-[List tested and supported versions]
+* Splunk Enterprise 10.0.0
 
-> Built by [Team/Organization Name]
-## Credits & Acknowledgements (optional)
+## Credits & Acknowledgements
 
-* [Contributor 1]
-* [Contributor 2]
-* [Contributor 3]
+This Add-On was built based on the [splunk-example-ta](https://github.com/splunk/splunk-example-ta/tree/main). Thank you a ton to the project maintainers and developers. :heart:
 
-## References (optional)
-Provide any relevant link to the app / add-on / project.
+## References
+* [UCC Framework Documentation](https://splunk.github.io/addonfactory-ucc-generator/)
 
 ## Contributing
 See the [CONTRIBUTING.md](https://github.com/splunk-platform-apps/.github/blob/main/.github/CONTRIBUTING.md) file for details.
+
+### Build and Package UCC TAs
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+ucc-gen build
+ucc-gen package --path output/SplunkCommunity_TA_UCCExample
+```
