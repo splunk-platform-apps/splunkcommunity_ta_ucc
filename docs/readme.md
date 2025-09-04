@@ -28,7 +28,7 @@ After having configured an account:
 
 * Select *Splunk Community Add-on for UCC Example / Inputs* among Splunk UI apps
 
-* Click on *Create New Input* and configure your own input(s) by providing:
+* Select *Create New Input* and configure your own input(s) by providing:
 
     * **Name** to identify the input,
     * **Interval** in seconds (i.e. how often do you want to poll data),
@@ -49,7 +49,7 @@ Useful SPL searches to:
 
 ## Credits & Acknowledgements
 
-This Add-On was built based on the [splunk-example-ta](https://github.com/splunk/splunk-example-ta/tree/main). Thank you a ton to the project maintainers and developers. :hearts:
+This Add-On was built based on the [splunk-example-ta](https://github.com/splunk/splunk-example-ta/tree/main). Thank you a ton to the project maintainers and developers. :heart:
 
 ## References
 * [UCC Framework Documentation](https://splunk.github.io/addonfactory-ucc-generator/)
