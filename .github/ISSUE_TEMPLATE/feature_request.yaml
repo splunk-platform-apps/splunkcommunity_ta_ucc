@@ -1,7 +1,7 @@
 name: Feature Request
 description: File a new feature request.
 title: "[Feature]: "
-labels: ["feat", "dev"]
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
@@ -20,7 +20,7 @@ body:
       label: Available Alternatives
       description: A clear and concise description of any alternative solutions or features you've considered.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: other-info
     attributes:
