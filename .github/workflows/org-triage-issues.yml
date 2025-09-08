@@ -8,5 +8,5 @@ jobs:
   call-workflow:
     uses: splunk-platform-apps/.github/.github/workflows/reusable-triage-issues.yml@main
     with:
-      issue_number: ${{ github.event.issue.number || 1 }}
+      issue_number: ${{ github.event.issue.number }}
       issue_labels: "${{ join(github.event.issue.labels.*.name, ',') }}"
