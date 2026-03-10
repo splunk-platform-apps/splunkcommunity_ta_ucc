@@ -12,3 +12,5 @@ check_for_file_and_directory_access:
   comment: 'done'
 name_of_manual_check_2:
   comment: 'done'
+check_all_python_files_are_well_formed:
+  comment: 'done'
