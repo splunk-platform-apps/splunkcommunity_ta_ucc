@@ -57,7 +57,7 @@ This Add-On was built based on the [splunk-example-ta](https://github.com/splunk
 ## Contributing
 See the [CONTRIBUTING.md](https://github.com/splunk-platform-apps/.github/blob/main/.github/CONTRIBUTING.md) file for details.
 
-### Build and Package UCC TAs
+### Build and Package UCC Add-Ons
 
 ```bash
 python3 -m venv .venv
