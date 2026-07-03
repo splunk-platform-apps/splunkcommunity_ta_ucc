@@ -4,9 +4,12 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  contents: read
+
 jobs:
   call-workflow:
-    uses: splunk-platform-apps/.github/.github/workflows/reusable-triage-issues.yml@1
+    uses: splunk-platform-apps/.github/.github/workflows/reusable-triage-issues.yml@v1
     with:
       issue_number: ${{ github.event.issue.number }}
       issue_labels: "${{ join(github.event.issue.labels.*.name, ',') }}"
