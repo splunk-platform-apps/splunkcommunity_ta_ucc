@@ -4,6 +4,9 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  contents: read
+
 jobs:
   call-workflow:
     uses: splunk-platform-apps/.github/.github/workflows/reusable-triage-issues.yml@v1
