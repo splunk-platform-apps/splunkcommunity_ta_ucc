@@ -1,12 +1,10 @@
 import traceback
 
+import example_utils
 import import_declare_test  # noqa: F401
-
 from solnlib import log
 from solnlib.modular_input import checkpointer
 from splunktaucclib.rest_handler.admin_external import AdminExternalHandler
-
-import example_utils
 
 
 class DeleteCheckpointRestHandler(AdminExternalHandler):
@@ -38,7 +36,7 @@ class DeleteCheckpointRestHandler(AdminExternalHandler):
                 example_utils.ADDON_NAME,
             )
             kvstore_checkpointer.delete(checkpointer_key_name)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             log.log_exception(
                 logger,
                 e,

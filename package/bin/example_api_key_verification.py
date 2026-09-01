@@ -1,5 +1,4 @@
 import import_declare_test  # noqa: F401
-
 from splunktaucclib.rest_handler.admin_external import AdminExternalHandler
 from splunktaucclib.rest_handler.error import RestError
 
