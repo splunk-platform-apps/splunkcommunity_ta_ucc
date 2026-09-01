@@ -1,12 +1,11 @@
+from __future__ import annotations
+
 import json
 import logging
-from typing import Optional
 from datetime import datetime
 
-import import_declare_test  # noqa: F401
-
 import example_utils
-
+import import_declare_test  # noqa: F401
 import requests
 from solnlib import conf_manager, log
 from solnlib.modular_input import checkpointer
@@ -28,7 +27,7 @@ def get_account_api_key(session_key: str, account_name: str):
 
 
 def get_data_from_api(
-    logger: logging.Logger, api_key: str, page_number: Optional[int] = 0
+    logger: logging.Logger, api_key: str, page_number: int | None = 0
 ):
     logger.info(f"Getting data from an external API [{page_number}]")
 
@@ -48,7 +47,7 @@ def get_data_from_api(
             return _call_api(page_number)
         except requests.exceptions.HTTPError:
             logger.warning("Failed to get data from the API, retrying...")
-    raise Exception("Failed to get data from the API")
+    raise Exception("Failed to get data from the API")  # noqa: TRY002
 
 
 def validate_input(definition: smi.ValidationDefinition):
@@ -121,7 +120,7 @@ def stream_events(inputs: smi.InputDefinition, event_writer: smi.EventWriter):
                 account=input_item.get("account"),
             )
             log.modular_input_end(logger, normalized_input_name)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             log.log_exception(
                 logger,
                 e,
